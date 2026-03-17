@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="star_whatsapp.config_tree_view" model="ir.ui.view">
+            <field name="name">Star Whatsapp: Config</field>
+            <field name="model">star_whatsapp.config</field>
+            <field name="arch" type="xml">
+                <list string="Config" editable="bottom">
+                    <field name="host"/>
+                    <field name="api_key" password="True"/>
+                </list>
+            </field>
+        </record>
+
+
+        <record id="star_whatsapp.config_act_window" model="ir.actions.act_window">
+            <field name="name">Config</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">star_whatsapp.config</field>
+            <field name="view_mode">list</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Config.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Configuración" id="star_whatsapp.config_menu" parent="star_whatsapp.main_menu"
+                  action="star_whatsapp.config_act_window" sequence="100"/>
+
+    </data>
+</odoo>

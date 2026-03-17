@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="star_whatsapp.instances_form_view" model="ir.ui.view">
+            <field name="name">star_whatsapp.instances.form</field>
+            <field name="model">star_whatsapp.instances</field>
+            <field name="arch" type="xml">
+                <form string="Instancias">
+                    <header>
+                        <button name="update_qr"
+                                string="Generar QR"
+                                type="object"
+                                class="btn-primary"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Nombre de Instancia..."/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="number"/>
+                            <field name="state" readonly="1"/>
+                            <field name="qr_code" widget="image" readonly="1"/>
+                        </group>
+
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="star_whatsapp.instances_tree_view" model="ir.ui.view">
+            <field name="name">Star Whatsapp: Instancias List View</field>
+            <field name="model">star_whatsapp.instances</field>
+            <field name="arch" type="xml">
+                <list string="Instancias">
+                    <field name="name"/>
+                    <field name="number"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="star_whatsapp.instances_search_view" model="ir.ui.view">
+            <field name="name">Star Whatsapp: Instancias Form View</field>
+            <field name="model">star_whatsapp.instances</field>
+            <field name="arch" type="xml">
+                <search string="Instancias">
+                    <field name="name"/>
+                    <field name="number"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="star_whatsapp.instances_kanban_view" model="ir.ui.view">
+            <field name="name">star_whatsapp.instances.kanban</field>
+            <field name="model">star_whatsapp.instances</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_small_column">
+
+                    <field name="name"/>
+                    <field name="number"/>
+                    <field name="state"/>
+                    <field name="qr_code"/>
+
+                    <templates>
+                        <t t-name="card">
+                            <div class="oe_kanban_global_click o_kanban_card">
+
+                                <!-- HEADER -->
+                                <div class="o_kanban_card_header">
+                                    <strong>
+                                        <field name="name"/>
+                                    </strong>
+                                </div>
+
+                                <!-- STATUS BADGE -->
+                                <div class="mt-2">
+                                    <t t-if="record.state.raw_value == 'connected'">
+                                        <span class="badge bg-success">🟢 Conectado</span>
+                                    </t>
+                                    <t t-elif="record.state.raw_value == 'connecting'">
+                                        <span class="badge bg-warning text-dark">🟡 Esperando QR</span>
+                                    </t>
+                                    <t t-else="">
+                                        <span class="badge bg-secondary">⚪ Creado</span>
+                                    </t>
+                                </div>
+
+                                <!-- NUMBER -->
+                                <div class="mt-2">
+                                    <i class="fa fa-phone" title="icon"/>
+                                    <field name="number"/>
+                                </div>
+
+
+                                <!-- ACTIONS -->
+                                <div class="mt-3 d-flex justify-content-between">
+
+                                    <button type="object"
+                                            name="update_qr"
+                                            class="btn btn-sm btn-primary"
+                                            t-if="record.state.raw_value != 'connected'">
+                                        🔄 QR
+                                    </button>
+
+                                    <button type="object" confirm="¿Estás seguro de que deseas eliminar esta instancia?"
+                                            name="unlink"
+                                            class="btn btn-sm btn-danger">
+                                        🗑
+                                    </button>
+
+                                </div>
+
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="star_whatsapp.instances_act_window" model="ir.actions.act_window">
+            <field name="name">Instancias</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">star_whatsapp.instances</field>
+            <field name="view_mode">kanban,list,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    No hay Instancias
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Instancias" id="star_whatsapp.instances_menu" parent="star_whatsapp.main_menu"
+                  action="star_whatsapp.instances_act_window" sequence="50"/>
+
+    </data>
+</odoo>

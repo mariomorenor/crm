@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="star_whatsapp.instance_1" model="star_whatsapp.config">
+            <field name="host">https://evolution-api.com</field>
+            <field name="api_key">123456789</field>
+        </record>
+
+    </data>
+</odoo>

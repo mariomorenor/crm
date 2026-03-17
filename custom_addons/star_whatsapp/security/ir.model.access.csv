@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_star_whatsapp_config,Configuración Whatsapp,star_whatsapp.model_star_whatsapp_config,star_whatsapp.admin_group,1,1,0,0
+access_star_whatsapp_instances,Configuración Whatsapp,star_whatsapp.model_star_whatsapp_instances,star_whatsapp.admin_group,1,1,1,1

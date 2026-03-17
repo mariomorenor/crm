@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.module.category" id="star_whatsapp.group_category">
+            <field name="name">Whatsapp</field>
+            <field name="sequence">1</field>
+        </record>
+        <record model="res.groups.privilege" id="star_whatsapp.privilege_whatsapp_role">
+            <field name="name">Acceso</field>
+            <field name="sequence">1</field>
+            <field name="category_id" ref="star_whatsapp.group_category"/>
+        </record>
+
+        <record id="star_whatsapp.admin_group" model="res.groups">
+            <field name="name">Administrador</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="privilege_id" ref="star_whatsapp.privilege_whatsapp_role"/>
+        </record>
+
+    </data>
+</odoo>

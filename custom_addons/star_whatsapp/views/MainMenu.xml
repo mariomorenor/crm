@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="star_whatsapp.main_menu" name="Whatsapp" web_icon="star_whatsapp,static/description/icon.png" />
+
+    </data>
+</odoo>
