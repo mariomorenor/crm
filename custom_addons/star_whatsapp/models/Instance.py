@@ -14,6 +14,11 @@ class EvoConfig(models.Model):
     host = fields.Char(string='Servidor Evolution API', required=True)
     api_key = fields.Char(string='API Key', required=True)
 
+    def get_config(self):
+        config = self.search([], limit=1)
+        if not config:
+            raise UserError("Configura Evolution API primero")
+        return config
 
 class Instance(models.Model):
     _name = 'star_whatsapp.instances'
@@ -111,7 +116,10 @@ class Instance(models.Model):
     @api.model
     def create(self, values):
         res = super(Instance, self).create(values)
-        res.create_instance()
+        try:
+            res.create_instance()
+        except UserError as e:
+            raise e
         return res
 
     def unlink(self):

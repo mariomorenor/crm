@@ -51,6 +51,7 @@ Requiere una instancia activa de Evolution API configurada previamente.
         'views/MainMenu.xml',
         'views/Config.xml',
         'views/Instances.xml',
+        'views/Messages.xml',
         # Data
         'data/EvoConfig.xml'
     ],
