@@ -40,7 +40,7 @@ Requiere una instancia activa de Evolution API configurada previamente.
     'version': '1.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','mail','crm'],
     'installable': True,
     'application': True,
     # always loaded
@@ -52,8 +52,12 @@ Requiere una instancia activa de Evolution API configurada previamente.
         'views/Config.xml',
         'views/Instances.xml',
         'views/Messages.xml',
+        'views/Crm/Lead.xml',
+        'views/WhatsappWizard.xml',
         # Data
-        'data/EvoConfig.xml'
+        'data/EvoConfig.xml',
+        # Cron
+        'views/Cron/SendWhatsappMessages.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

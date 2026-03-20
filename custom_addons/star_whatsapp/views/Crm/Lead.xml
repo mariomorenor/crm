@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="star_whatsapp.crm_lead_whatsapp_button" model="ir.ui.view">
+            <field name="name">crm.lead.whatsapp.button</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//header" position="inside">
+                    <button name="action_open_whatsapp_wizard"
+                            type="object"
+                            string="WhatsApp"
+                            class="btn btn-success"
+                            icon="fa-whatsapp"/>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

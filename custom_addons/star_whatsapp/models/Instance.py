@@ -20,6 +20,7 @@ class EvoConfig(models.Model):
             raise UserError("Configura Evolution API primero")
         return config
 
+
 class Instance(models.Model):
     _name = 'star_whatsapp.instances'
     _description = 'Star Whatsapp: Instancia'
@@ -35,6 +36,8 @@ class Instance(models.Model):
         ('connecting', 'Esperando conexión'),
         ('connected', 'Conectado')
     ])
+
+    priority = fields.Integer(string='Priority', required=True, default=10)
 
     def create_instance(self):
         config = self.env['star_whatsapp.config'].search([], limit=1)
